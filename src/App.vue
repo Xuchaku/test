@@ -1,28 +1,49 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>]
+    <Searcher></Searcher>
+    <modal name="hello-world">
+      hello, world!
+    </modal>
+    <button v-on:click="show"></button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Searcher from "./components/Searcher.vue"
+import VModal from 'vue-js-modal'
+import Vue from 'vue'
 
+
+Vue.use(VModal)
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Searcher
+  },
+  methods: {
+    show () {
+      this.$modal.show('hello-world');
+    },
+    hide () {
+      this.$modal.hide('hello-world');
+    }
   }
 }
 </script>
 
 <style>
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+ 
+}
+body{
+  background-color: #ccc;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
